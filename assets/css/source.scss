@@ -1,0 +1,125 @@
+@mixin transform( $property ){
+    -webkit-transform: $property;
+      -ms-transform: $property;
+          transform: $property;
+}
+
+@mixin transition( $property ){
+    -webkit-transition: $property cubic-bezier(.785,.135,.15,.86);
+      -ms-transition: $property cubic-bezier(.785,.135,.15,.86);
+          transition: $property cubic-bezier(.785,.135,.15,.86);
+}
+
+.codeless-portfolio{
+    display:block;
+    margin:0 -15px;
+
+    .codeless-item{
+        padding:15px;
+        width:100%;
+    }
+
+    @media (min-width:992px){
+        &[data-cols="1"]{
+            .codeless-item{
+                width:100%;
+            }
+        }
+        &[data-cols="2"]{
+            .codeless-item{
+                width:50%;
+            }
+        }
+        &[data-cols="3"]{
+            .codeless-item{
+                width:33.3%;
+            }
+        }
+        &[data-cols="4"]{
+            .codeless-item{
+                width:25%;
+            }
+        }
+        &[data-cols="5"]{
+            .codeless-item{
+                width:20%;
+            }
+        }
+    }
+
+    
+
+    &--style-only_image{
+        .codeless-item{
+            &__inner-wrapper{
+                position:relative;
+            }
+            &__overlay{
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:rgba(0,0,0,0.2);
+                z-index:99;
+                opacity:0;
+                @include transition( opacity 0.3s );
+            }
+
+            a{
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                z-index:999;
+            }
+
+            img{
+                display:block;
+            }
+
+            &:hover{
+                .codeless-item__overlay{
+                    opacity:1;
+                }
+            }
+        }
+    }
+
+    &--style-with_title_bottom{
+        .codeless-item{
+            h3{
+                text-align:center;
+                display:block;
+            }
+
+            &__media{
+                position:relative;
+            }
+
+            img{
+                display:block;
+            }
+
+            &__overlay{
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:rgba(0,0,0,0.2);
+                z-index:99;
+                opacity:0;
+                @include transition( opacity 0.3s );
+            }
+
+            &:hover{
+                .codeless-item__overlay{
+                    opacity:1;
+                }
+            }
+        }
+        
+    }
+}
